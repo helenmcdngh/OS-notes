@@ -1,6 +1,7 @@
 import flask as fl
 from flask import render_template, request
 import sqlite3
+#-----------------------------------------------------------#
 
 DATABASE = 'data/b.db'
 
@@ -25,21 +26,28 @@ def close_connection(exception):
 def root():
     return render_template('index.html')
 
+#-----------------------------------------------------------#
+
 @app.route("/database", methods=["GET","POST"])
 def database():
-    dur = post_db().cursor()
-    dur.execute("insert into mytable(title,define)",(fl.request.form["title"],fl.request.form["define"]))
     cur = get_db().cursor()
+    #cur.execute("insert into mytable(title,define)"),(fl.request.form["title"],fl.request.form["define"])
     cur.execute("Select * from mytable")
-    return str(cur.fetchall()) + str(dur.fetchall()) + render_template('base.html')
+    return str(cur.fetchall()) + render_template('base.html')
+
+#-----------------------------------------------------------#
 
 @app.route("/name", methods=["GET", "POST"])
 def name():
     return fl.request.form["name"] + " : " + fl.request.form["comment"]
 
+#-----------------------------------------------------------#
+
 @app.route("/info", methods=["GET","POST"])
 def info():
     return render_template('base.html') + "Welcome to Operating Systems Notes. Use this single page web application to store all your information on OS"
+
+#-----------------------------------------------------------#
 
 if __name__ == "__main__":
     app.run(debug=True)
