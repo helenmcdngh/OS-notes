@@ -3,10 +3,12 @@ import sqlite3
 DATABASE = 'data/b.db'
 
 def setup_db():
+    #setuping up database#
     """Creates database if it has not already been set up."""
     db = sqlite3.connect(DATABASE)
     cur = db.cursor()
-
+    
+    
     # Create the table if it doesn't exist.
     cur.execute("CREATE TABLE IF NOT EXISTS mytable(id INTEGER PRIMARY KEY, title TEXT, define Text)")
     db.commit()
