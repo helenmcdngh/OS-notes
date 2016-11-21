@@ -31,8 +31,8 @@ def root():
 @app.route("/database", methods=["GET","POST"])
 def database():
     cur = get_db().cursor()
-    cur.execute("Select * from mytable")
     cur.execute('INSERT INTO mytable(title, define) VALUES(?,?)',(fl.request.form['title'],fl.request.form['define']))
+    cur.execute("Select * from mytable")
     return (render_template('base.html') + str(cur.fetchall()))  
 
 #-----------------------------------------------------------#
