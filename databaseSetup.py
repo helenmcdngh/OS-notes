@@ -10,7 +10,7 @@ def setup_db():
     
     
     # Create the table if it doesn't exist.
-    cur.execute("CREATE TABLE IF NOT EXISTS mytable(id INTEGER PRIMARY KEY, title TEXT, define Text)")
+    cur.execute("CREATE TABLE IF NOT EXISTS mytable( title TEXT, define TEXT)")
     db.commit()
     
     # Insert some dummy data if the table is empty.

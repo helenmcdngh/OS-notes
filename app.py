@@ -14,10 +14,11 @@ def get_db():
     db = fl.g._database = sqlite3.connect(DATABASE)
   return db
 
-#@app.teardown_appcontext
-#def close_connection(exception):
-  #db = getattr(fl.g, '_database', None)if db is not None:
-    #db.close()
+@app.teardown_appcontext
+def close_connection(exception):
+  db = getattr(fl.g, '_database', None)
+  if db is not None:
+    db.close()
 
 #-----------------------------------------------------------#
 #home page#
@@ -29,21 +30,21 @@ def root():
 #inserting data into database#
 @app.route("/database", methods=["GET","POST"])
 def database():
-    #g.db = connect_db()
     cur = get_db().cursor()
-    #g.db.execute('insert into mytable(title,define) values (?,?)',[fl.request.form["title"],fl.request.form["define"]])
-    #g.db.commit()
     cur.execute("Select * from mytable")
-    return str(render_template('base.html') 
+    cur.execute('INSERT INTO mytable(title, define) VALUES(?,?)')
+    return (render_template('base.html') + str(cur.fetchall()))  
 
 #-----------------------------------------------------------#
 #first dummy info to page
 #@app.route("/name", methods=["GET", "POST"])
-#def name():
-    #return fl.request.form["name"] + " : " + fl.request.form["comment"]
+#def hello():
+    #return render_template('base.html') + fl.request.form["name"] + " : " + fl.request.form["comment"]
 
 #-----------------------------------------------------------#
 #information on page#
+
+#-----------------------------------------------------------#
 @app.route("/info", methods=["GET","POST"])
 def info():
     return render_template('base.html') + "Welcome to Operating Systems Notes. Use this single page web application to store all your information on OS"
