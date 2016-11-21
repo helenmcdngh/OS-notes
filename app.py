@@ -32,7 +32,7 @@ def root():
 def database():
     cur = get_db().cursor()
     cur.execute("Select * from mytable")
-    cur.execute('INSERT INTO mytable(title, define) VALUES(?,?)')
+    cur.execute('INSERT INTO mytable(title, define) VALUES(?,?)',(fl.request.form['title'],fl.request.form['define']))
     return (render_template('base.html') + str(cur.fetchall()))  
 
 #-----------------------------------------------------------#
