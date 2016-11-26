@@ -1,13 +1,15 @@
+#imports
 import flask as fl
 from flask import render_template, request, g
 import sqlite3
 #-----------------------------------------------------------#
 
+#Database file
 DATABASE = 'data/b.db'
 
 app = fl.Flask(__name__)
 #-----------------------------------------------------------#
-#database#
+#database
 def get_db():
   db = getattr(fl.g, '_database', None)
   if db is None:
@@ -21,13 +23,14 @@ def close_connection(exception):
     db.close()
 
 #-----------------------------------------------------------#
-#home page#
+#home page
 @app.route("/")
 def root():
     return render_template('index.html')
 
 #-----------------------------------------------------------#
-#inserting data into database#
+#inserting data into database
+#saves it to the database
 @app.route("/database", methods=["GET","POST"])
 def database():
     cur = get_db().cursor()
@@ -39,6 +42,8 @@ def database():
     cur.execute("Select * from mytable")
     return (render_template('base.html') + str(cur.fetchall()) ) 
 
+#-----------------------------------------------------------#
+#Display all the definitions on the database
 @app.route("/databaseStore",methods=["GET","POST"])
 def databaseStore():
     cur = get_db().cursor()
@@ -46,18 +51,11 @@ def databaseStore():
     return (render_template('base.html') + str(cur.fetchall()))
 
 #-----------------------------------------------------------#
+
 #first dummy info to page
 #@app.route("/name", methods=["GET", "POST"])
 #def hello():
     #return render_template('base.html') + fl.request.form["name"] + " : " + fl.request.form["comment"]
-
-#-----------------------------------------------------------#
-#information on page#
-
-#-----------------------------------------------------------#
-@app.route("/info", methods=["GET","POST"])
-def info():
-    return render_template('base.html') + "Welcome to Operating Systems Notes. Use this single page web application to store all your information on OS"
 
 #-----------------------------------------------------------#
 
