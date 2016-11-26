@@ -20,5 +20,5 @@ Once the application is running, it can be accessed by pointing your browser at 
 
 ### Architecture
 This web application runs in [Python 3](https://www.python.org) using the [Flask](http://flask.pocoo.org/) web micro-framework and uses [SQLite3](https://docs.python.org/2/library/sqlite3.html) as a database to store all the definitions.
-Python 3 and Flask were requirements for the project. You had a choice between counchDB, mongoDB, Neo4j, Redis and SqLite, I chose SQLite as it is easy to use and does not require much setup to get the web application up and running.
+Python 3 and Flask were requirements for the project. You had a choice between counchDB, mongoDB, Neo4j, Redis and SqLite, I decided to use SQLite as it is easy to use and does not require much setup to get the web application up and running.
 
