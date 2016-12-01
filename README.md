@@ -24,3 +24,6 @@ This web application runs in [Python 3](https://www.python.org) using the [Flask
 Python 3 and Flask were requirements for the project. You had a choice between counchDB, mongoDB, Neo4j, Redis and SqLite, I decided to use SQLite as it is easy to use and does not require much setup to get the Web Application up and running.
 
 The Application contains two templates the main template, index.html contains a navigation bar that allows you select to view the form and the database page and the bar also collapses when the browser window is shrunk, it also contains the form to input the data. The other template, base.html is just a basic template that contains the navigation bar that allows you to navigate through the Application. 
+
+I adapted the files setup.py and webapp.py from [sqlite3 example webapp with Flask](https://github.com/data-representation/example-sqlite) for my databaseSetup.py and app.py files in my project. 
+
