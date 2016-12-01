@@ -2,8 +2,8 @@
 #### Data Representation and Querying Project 2016
 
 ### Project Overview
-I have created a Single-Page Web Application that allows you to enter Operating Systems Definitions into a Database. It is a very simple designed application and is also easy to use.
-
+I have created a Single-Page Web Application that allows you to enter Operating Systems Definitions into a Database, that I adapted from an example project that we were shown in . It is a very simple designed application and is also easy to use.
+The app is simple to use, you simple
 ### How to run this application
 This note recording application is written using the [Flask](http://flask.pocoo.org/) library in [Python 3](https://www.python.org) and it uses [Bootstrap](http://getbootstrap.com/) links in the html pages for design.
 I use the [sqlite3](https://docs.python.org/2/library/sqlite3.html) package for persistence in the application.
